@@ -1,0 +1,11 @@
+version = 1
+
+test_patterns = ["*_test*"]
+
+[[analyzers]]
+name = "go"
+enabled = true
+
+  [analyzers.meta]
+  import_path = "github.com/PiterPentester/goGen"
+  dependencies_vendored = true
