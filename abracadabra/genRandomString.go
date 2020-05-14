@@ -20,7 +20,7 @@ var SeededRand *rand.Rand = rand.New(
 func StringWithCharset(length int, Charset string) string {
 	b := make([]byte, length)
 	for i := range b {
-		b[i] = Charset[seededRand.Intn(len(Charset))]
+		b[i] = Charset[SeededRand.Intn(len(Charset))]
 	}
 	return string(b)
 }
