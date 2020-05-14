@@ -1,5 +1,3 @@
-module goGen
+module github.com/PiterPentester/goGen
 
 go 1.13
-
-//replace goGen => ./
