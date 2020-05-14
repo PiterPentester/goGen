@@ -7,6 +7,7 @@ import (
 	"errors"
 	"io/ioutil"
 	"strings"
+	"github.com/PiterPentester/goGen/abracadabra"
 )
 
 var client http.Client
@@ -102,7 +103,7 @@ func GetRandWords(numOfWords int, words []string) []string {
 func GenMemorablePass(words []string) string {
     res := ""
     for _, w := range words {
-		smbl := Symbols[seededRand.Intn(len(Symbols))]
+		smbl := abracadabra.Symbols[seededRand.Intn(len(Symbols))]
 	    res += w + string(smbl)
 	}
 	d := digits[seededRand.Intn(len(Digits))]
