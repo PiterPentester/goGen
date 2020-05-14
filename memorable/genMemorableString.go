@@ -93,7 +93,7 @@ func ParseOutput() (string, error) {
 func GetRandWords(numOfWords int, words []string) []string {
     res := make([]string, numOfWords)
     for i := range res {
-		res[i] = strings.Title(words[abracadabra.seededRand.Intn(len(words))])
+		res[i] = strings.Title(words[abracadabra.SeededRand.Intn(len(words))])
 	}
 	return res
 }
@@ -102,10 +102,10 @@ func GetRandWords(numOfWords int, words []string) []string {
 func GenMemorablePass(words []string) string {
     res := ""
     for _, w := range words {
-		smbl := abracadabra.Symbols[abracadabra.seededRand.Intn(len(abracadabra.Symbols))]
+		smbl := abracadabra.Symbols[abracadabra.SeededRand.Intn(len(abracadabra.Symbols))]
 	    res += w + string(smbl)
 	}
-	d := abracadabra.Digits[abracadabra.seededRand.Intn(len(abracadabra.Digits))]
+	d := abracadabra.Digits[abracadabra.SeededRand.Intn(len(abracadabra.Digits))]
 	res += string(d)
 	return res 
 }

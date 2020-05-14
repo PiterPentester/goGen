@@ -13,7 +13,7 @@ const Charset = "abcdefghijklmnopqrstuvwxyz" +
 	Symbols + Digits
 
 // init seededRand
-var seededRand *rand.Rand = rand.New(
+var SeededRand *rand.Rand = rand.New(
 	rand.NewSource(time.Now().UnixNano()))
 
 // StringWithCharset get length(int) & charset(str) => return generated random password string
