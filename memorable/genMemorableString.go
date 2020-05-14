@@ -79,7 +79,7 @@ func splitBySpace(res []string) []string {
 func ParseOutput() (string, error) {
 	txt, err := CurlToAddr("http://www.randomtext.me/api/gibberish")
 	if err != nil {
-	    return "" err
+	    return "", err
 	}
 	
     txt = getTextOut(txt)
