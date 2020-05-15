@@ -1,7 +1,6 @@
 package memorable
 
 import (
-	"time"
 	"net/http"
 	"errors"
 	"io/ioutil"
@@ -11,10 +10,12 @@ import (
 
 var client http.Client
 
-// Init errors
+// ErrBadCode - handle not "OK" http status code
 var ErrBadCode = errors.New("bad status code")
+// ErrEmptyResult - handle empty result for parsing functions
+var ErrEmptyResult = errors.New("function return empty result")
 
-// CurlToAddr - makes a curl request to the site & save the output
+// CurlToAddr - makes a curl request to the site & save the output as string
 func CurlToAddr(addr string) (string, error) {
     resp, err := client.Get(addr)
     if err != nil {
@@ -35,16 +36,21 @@ func CurlToAddr(addr string) (string, error) {
     return bodyString, nil
 }
 
-func getTextOut(txt string) string {
+// getTextOut - cut text after "text_out" and store it to txt var
+func getTextOut(txt string) (string, error) {
+	if txt == "" || len(txt) == 0 {
+	    return "", ErrEmptyResult
+	}
 	// text begins after "text_out"
 	f := "text_out"
 	i := strings.Index(txt, f)
 	if i > -1 {
 	    txt = txt[i+len(f)+3:len(txt)-2]
 	}
-	return txt
+	return txt, nil
 }
 
+// splitByTag - split our txt var by "<p>", remove ".<\/p>\r" from res and return list of lines.
 func splitByTag(txt string) []string {
     // split txt by <p> tag
 	res := strings.Split(txt, "<p>")
@@ -59,9 +65,14 @@ func splitByTag(txt string) []string {
 	return res
 }
 
-func splitBySpace(res []string) []string {
+// splitBySpace - split our list of lines into a list of words and return it.
+func splitBySpace(res []string) ([]string, error) {
     var words []string
     
+    if res == nil || len(res) == 0 {
+	    return words, ErrEmptyResult
+	}
+	
 	// split res by " "
 	for _, e := range res {
 	    w := strings.Split(e, " ")
@@ -72,25 +83,39 @@ func splitBySpace(res []string) []string {
 		    words = append(words, word)
 		}
 	}
-    return words
+    return words, nil
 }
 
-// ParseOutput get txt string & return list of words
-func ParseOutput() (string, error) {
+// parseOutput - wrapper for parsing functions, return list of words
+func parseOutput() ([]string, error) {
+	var words []string = nil
 	txt, err := CurlToAddr("http://www.randomtext.me/api/gibberish")
 	if err != nil {
-	    return "", err
+	    return words, err
 	}
 	
-    txt = getTextOut(txt)
+    txt, err = getTextOut(txt)
+    if err != nil {
+	    return words, err
+	}
+	
     res := splitByTag(txt)
-    words := splitBySpace(res)
-    
+    if res == nil || len(res) == 0 {
+	    return words, ErrEmptyResult
+	}
+	
+    words, err = splitBySpace(res)
+    if err != nil {
+	    return words, err
+	}
+	
+	return words, nil
 }
 
-// GetRandWords: numOfWords(int), words([]string) => []string 
+// GetRandWords - get number of wanted words & create list of random choosen words with predefined length  
 // GetRandWords(3, words) => [word1, word2, word3] 
-func GetRandWords(numOfWords int, words []string) []string {
+func GetRandWords(numOfWords int) []string {
+	words, _ := parseOutput()
     res := make([]string, numOfWords)
     for i := range res {
 		res[i] = strings.Title(words[abracadabra.SeededRand.Intn(len(words))])

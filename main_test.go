@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+  "testing"
+  "github.com/PiterPentester/goGen/abracadabra"
+)
 
 func TestStringWithCharset(t *testing.T) {
 	type args struct {
@@ -24,7 +27,7 @@ func TestStringWithCharset(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := len(StringWithCharset(tt.args.length, tt.args.charset)); got != len(tt.want) {
+			if got := len(abracadabra.StringWithCharset(tt.args.length, tt.args.charset)); got != len(tt.want) {
 				t.Errorf("length StringWithCharset() = %v, want %v", got, len(tt.want))
 			}
 		})
@@ -44,7 +47,7 @@ func TestString(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := String(tt.args.length); got != tt.want {
+			if got := abracadabra.String(tt.args.length); got != tt.want {
 				t.Errorf("String() = %v, want %v", got, tt.want)
 			}
 		})

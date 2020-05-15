@@ -5,18 +5,20 @@ import (
 	"time"
 )
 
+// Symbols - var for different symbols in our Charset. Contains most frequent symbols.
 const Symbols = "~!@#$%^&*()_{}<>"
+// Digits - var for all digits in our Charset
 const Digits = "1234567890"
-// init our charset for password
+// Charset for password
 const Charset = "abcdefghijklmnopqrstuvwxyz" +
 	"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
 	Symbols + Digits
 
-// init seededRand
+// SeededRand - init seed from time
 var SeededRand *rand.Rand = rand.New(
 	rand.NewSource(time.Now().UnixNano()))
 
-// StringWithCharset get length(int) & charset(str) => return generated random password string
+// StringWithCharset - get length(int) & charset(str) => return generated random password string
 func StringWithCharset(length int, Charset string) string {
 	b := make([]byte, length)
 	for i := range b {
