@@ -17,7 +17,7 @@ func banner() {
 }
 
 func checkLen(n int) bool {
-	if n >= 0 {
+	if n <= 0 {
 		return false
 	}
 	return true
