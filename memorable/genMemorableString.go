@@ -90,7 +90,7 @@ func splitBySpace(res []string) ([]string, error) {
 
 // parseOutput - wrapper for parsing functions, return list of words
 func parseOutput() ([]string, error) {
-	var words []string = nil
+	var words []string
 	txt, err := CurlToAddr("http://www.randomtext.me/api/gibberish")
 	if err != nil {
 		return words, err
@@ -102,7 +102,7 @@ func parseOutput() ([]string, error) {
 	}
 
 	res := splitByTag(txt)
-	if res == nil || len(res) == 0 {
+	if len(res) == 0 {
 		return words, ErrEmptyResult
 	}
 
@@ -125,7 +125,7 @@ func GetRandWords(numOfWords int) []string {
 	return res
 }
 
-// GenMemorablePass
+// GenMemorablePass - main function for generating memorable passwords
 func GenMemorablePass(words []string) string {
 	res := ""
 	for _, w := range words {
