@@ -40,7 +40,7 @@ func CurlToAddr(addr string) (string, error) {
 
 // getTextOut - cut text after "text_out" and store it to txt var
 func getTextOut(txt string) (string, error) {
-	if txt == "" || len(txt) == 0 {
+	if txt == "" {
 		return "", ErrEmptyResult
 	}
 	// text begins after "text_out"
