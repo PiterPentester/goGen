@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 
 	abr "github.com/PiterPentester/goGen/abracadabra"
@@ -16,37 +17,18 @@ func banner() {
 	fmt.Println("")
 }
 
-func checkLen(n int) bool {
-	return n > 0
-}
-
 func goGen() {
-	fmt.Println("What type of password do you want to generate?")
-	fmt.Println("Choose num:")
-	fmt.Println("1 - Abracadabra password")
-	fmt.Println("2 - Memorable password")
-	var answer, length int
-	fmt.Scanf("%d", &answer)
-	if answer == 1 {
-		fmt.Println("You choose: abracadabra")
-		fmt.Println("Enter length of password(>0):")
-		fmt.Scanf("%d", &length)
-		if checkLen(length) {
-			fmt.Println("Abracadabra password:", abr.String(length))
-		} else {
-			fmt.Println("Are you stupid?!")
-		}
-	} else if answer == 2 {
-		fmt.Println("You choose: memorable")
-		fmt.Println("Enter num of words in password(>0):")
-		fmt.Scanf("%d", &length)
-		if checkLen(length) {
-			fmt.Println("Memorable password:", mem.GenMemorablePass(mem.GetRandWords(length)))
-		} else {
-			fmt.Println("Are you stupid?!")
-		}
+	genMem := flag.Bool("mem", false, "generate memorable password")
+	genAbr := flag.Bool("abr", false, "generate abracadabra password")
+	flag.Parse()
+	if *genMem {
+		fmt.Println("Memorable password:", mem.GenMemorablePass(mem.GetRandWords(3)))
+	} else if *genAbr {
+		fmt.Println("Abracadabra password:", abr.String(10))
 	} else {
-		fmt.Println("Bad input!!!")
+		fmt.Println("Choose your pass:")
+		fmt.Println("./goGen -mem (return memorable password)")
+		fmt.Println("./goGen -abr (return abracadabra password)")
 	}
 }
 
