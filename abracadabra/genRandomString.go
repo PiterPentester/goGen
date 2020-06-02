@@ -5,14 +5,26 @@ import (
 	"time"
 )
 
-// Symbols - var for different symbols in our Charset. Contains most frequent symbols.
+// Symbols - different symbols in our Charset. Contains most frequent symbols.
 const Symbols = "~!@#$%^&*()_{}<>"
-// Digits - var for all digits in our Charset
+
+// Digits - all digits in our Charset
 const Digits = "1234567890"
+
+// VowelsUpper - upper vowels in language
+const VowelsUpper = "AEIOUY"
+
+// VowelsLower - lower vowels in language
+const VowelsLower = "aeiouy"
+
+// ConsonantsUpper - upper consonants in language
+const ConsonantsUpper = "BCDFGHJKLMNPQRSTVWXZ"
+
+// ConsonantsLower - lower consonants in language
+const ConsonantsLower = "bcdfghjklmnpqrstvwxz"
+
 // Charset for password
-const Charset = "abcdefghijklmnopqrstuvwxyz" +
-	"ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789" +
-	Symbols + Digits
+const Charset = VowelsUpper + VowelsLower + ConsonantsUpper + ConsonantsLower + Symbols + Digits
 
 // SeededRand - init seed from time
 var SeededRand *rand.Rand = rand.New(
