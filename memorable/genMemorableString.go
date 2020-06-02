@@ -9,6 +9,7 @@ import (
 	"github.com/PiterPentester/goGen/abracadabra"
 )
 
+// init our client for curl requests
 var client http.Client
 
 // ErrBadCode - handle not "OK" http status code
@@ -114,11 +115,33 @@ func parseOutput() ([]string, error) {
 	return words, nil
 }
 
+// genOfflineWords - in case we have no access to internet for get random words from site
+func genOfflineWords(numOfWords int) []string {
+	res := make([]string, numOfWords)
+	for i := range res {
+		w := ""
+		for j := 0; j < 2; j++ {
+			c := abracadabra.ConsonantsLower[abracadabra.SeededRand.Intn(len(abracadabra.ConsonantsLower))]
+			v := abracadabra.VowelsLower[abracadabra.SeededRand.Intn(len(abracadabra.VowelsLower))]
+			w += string(c) + string(v)
+		}
+		res[i] = w
+	}
+	return res
+}
+
 // GetRandWords - get number of wanted words & create list of random choosen words with predefined length
 // GetRandWords(3, words) => [word1, word2, word3]
 func GetRandWords(numOfWords int) []string {
-	words, _ := parseOutput()
 	res := make([]string, numOfWords)
+	words, err := parseOutput()
+	if err != nil {
+		words = genOfflineWords(numOfWords)
+		for i := range res {
+			res[i] = strings.Title(words[i])
+		}
+		return res
+	}
 	for i := range res {
 		res[i] = strings.Title(words[abracadabra.SeededRand.Intn(len(words))])
 	}
