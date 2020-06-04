@@ -152,10 +152,10 @@ func GetRandWords(numOfWords int) []string {
 func GenMemorablePass(words []string) string {
 	res := ""
 	for _, w := range words {
-		smbl := abracadabra.Symbols[abracadabra.SeededRand.Intn(len(abracadabra.Symbols))]
-		res += w + string(smbl)
+		d := abracadabra.Digits[abracadabra.SeededRand.Intn(len(abracadabra.Digits))]
+		res += w + string(d)
 	}
-	d := abracadabra.Digits[abracadabra.SeededRand.Intn(len(abracadabra.Digits))]
-	res += string(d)
+	smbl := abracadabra.Symbols[abracadabra.SeededRand.Intn(len(abracadabra.Symbols))]
+	res += string(smbl)
 	return res
 }
