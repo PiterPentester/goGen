@@ -1,18 +1,50 @@
 package abracadabra
 
 import (
+	"regexp"
 	"testing"
 	"unicode"
 )
 
+// checkStrength(password) - test our password complexity.
+// TRUE if contains UPPERCASE & lowercase & special symbols.
+// Else => FALSE
 func checkStrength(pass string) bool {
 	isDigit := false
+	isUpper := false
+	isLower := false
+	isSymbol := false
+
+	if len(pass) < 8 {
+		return false
+	}
+
 	for _, c := range pass {
 		if unicode.IsDigit(c) {
 			isDigit = true
 		}
+		if unicode.IsUpper(c) {
+			isUpper = true
+		}
+		if unicode.IsLower(c) {
+			isLower = true
+		}
 	}
-	return isDigit
+
+	reg, err := regexp.Compile("[!^a-zA-Z0-9]+")
+	if err != nil {
+		return false
+	}
+
+	processedString := reg.ReplaceAllString(pass, "")
+	if processedString != "" {
+		isSymbol = true
+	}
+
+	if isDigit && isUpper && isLower && isSymbol {
+		return true
+	}
+	return false
 }
 
 func TestStringWithCharset(t *testing.T) {
@@ -21,33 +53,40 @@ func TestStringWithCharset(t *testing.T) {
 		Charset string
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name  string
+		args  args
+		check bool
 	}{
-		// TODO: Add test cases.
 		{
-			name: "test length",
+			name: "fail length < 8",
+			args: args{
+				length:  7,
+				Charset: Charset,
+			},
+			check: false,
+		},
+		{
+			name: "test length 10",
 			args: args{
 				length:  10,
 				Charset: Charset,
 			},
-			want: "1234567890",
+			check: true,
 		},
 
 		{
-			name: "test length",
+			name: "test length 20",
 			args: args{
 				length:  20,
 				Charset: Charset,
 			},
-			want: "12345678901234567890",
+			check: true,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := len(StringWithCharset(tt.args.length, tt.args.Charset)); got != len(tt.want) {
-				t.Errorf("StringWithCharset() = %v, want %v", got, tt.want)
+			if cmp := checkStrength(StringWithCharset(tt.args.length, Charset)); cmp != tt.check {
+				t.Errorf("Check strength StringWithCharset() = %v, want %v", cmp, tt.check)
 			}
 		})
 	}
@@ -58,31 +97,37 @@ func TestString(t *testing.T) {
 		length int
 	}
 	tests := []struct {
-		name string
-		args args
-		want string
+		name  string
+		args  args
+		check bool
 	}{
-		// TODO: Add test cases.
 		{
-			name: "test length",
+			name: "fail length < 8",
+			args: args{
+				length: 7,
+			},
+			check: false,
+		},
+		{
+			name: "test length 10",
 			args: args{
 				length: 10,
 			},
-			want: "1234567890",
+			check: true,
 		},
 
 		{
-			name: "test length",
+			name: "test length 20",
 			args: args{
 				length: 20,
 			},
-			want: "12345678901234567890",
+			check: true,
 		},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := len(String(tt.args.length)); got != len(tt.want) {
-				t.Errorf("String() = %v, want %v", got, tt.want)
+			if cmp := checkStrength(String(tt.args.length)); cmp != tt.check {
+				t.Errorf("Check strength StringWithCharset() = %v, want %v", cmp, tt.check)
 			}
 		})
 	}
