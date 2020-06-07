@@ -150,7 +150,7 @@ func GetRandWords(numOfWords int) []string {
 	return res
 }
 
-func random(min int, max int) int {
+func random(min, max int) int {
     return rand.Intn(max-min) + min
 }
 
