@@ -40,40 +40,39 @@ var SeededRand *rand.Rand = rand.New(
 func StringWithCharset(length int, Charset string) string {
 	b := make([]byte, length)
 	var l, u, d, s int = 0, 0, 0, 0
-	for j := 0; j < len(b);{
+	for j := 0; j < len(b); {
 		//generate random i
 		i := SeededRand.Intn(len(b))
-			//insert Lower
-			if i%2 == 0 && l < 2 {
-				b[j] = Lower[SeededRand.Intn(len(Lower))]
-				l++
-				j++
-			}else if i%5 == 0 && u < 2 {
-				//insert Upper
-				b[j] = Upper[SeededRand.Intn(len(Upper))]
-				u++
-				j++
-			}else if i%3 == 0 && d < 2 {
-				//insert Digits
-				b[j] = Digits[SeededRand.Intn(len(Digits))]
-				d++
-				j++
-			}else if i%4 == 0 && s < 2 {
-				//insert Symbols
-				b[j] = Symbols[SeededRand.Intn(len(Symbols))]
-				s++
-				j++
-			}else{
-				//insert random
-				b[j] = Charset[SeededRand.Intn(len(Charset))]
-				j++
-			}
+		//insert Lower
+		if i%2 == 0 && l < 2 {
+			b[j] = Lower[SeededRand.Intn(len(Lower))]
+			l++
+			j++
+		} else if i%5 == 0 && u < 2 {
+			//insert Upper
+			b[j] = Upper[SeededRand.Intn(len(Upper))]
+			u++
+			j++
+		} else if i%3 == 0 && d < 2 {
+			//insert Digits
+			b[j] = Digits[SeededRand.Intn(len(Digits))]
+			d++
+			j++
+		} else if i%1 == 0 && s < 2 {
+			//insert Symbols
+			b[j] = Symbols[SeededRand.Intn(len(Symbols))]
+			s++
+			j++
+		} else {
+			//insert random
+			b[j] = Charset[SeededRand.Intn(len(Charset))]
+			j++
+		}
 	}
-	if len(string(b))>7 {
+	if len(string(b)) > 7 {
 		return string(b)
-	}else{
-		return String(8)
 	}
+	return String(10)
 }
 
 // String - wrapper for StringWithCharset. Get length(int) => return StringWithCharset
