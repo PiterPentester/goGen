@@ -20,6 +20,9 @@ var ErrBadCode = errors.New("bad status code")
 // ErrEmptyResult - handle empty result for parsing functions
 var ErrEmptyResult = errors.New("function return empty result")
 
+// ErrBadNumOfWords - handle 0 & < 3 input
+var ErrBadNumOfWords = errors.New("bad num of words")
+
 // CurlToAddr - makes a curl request to the site & save the output as string
 func CurlToAddr(addr string) (string, error) {
 	resp, err := client.Get(addr)
@@ -56,7 +59,10 @@ func getTextOut(txt string) (string, error) {
 }
 
 // splitByTag - split our txt var by "<p>", remove ".<\/p>\r" from res and return list of lines.
-func splitByTag(txt string) []string {
+func splitByTag(txt string) ([]string, error) {
+	if txt == "" {
+		return []string{}, ErrEmptyResult
+	}
 	// split txt by <p> tag
 	res := strings.Split(txt, "<p>")
 	for id, elem := range res {
@@ -67,7 +73,7 @@ func splitByTag(txt string) []string {
 		}
 		res[id] = elem
 	}
-	return res
+	return res, nil
 }
 
 // splitBySpace - split our list of lines into a list of words and return it.
@@ -92,9 +98,9 @@ func splitBySpace(res []string) ([]string, error) {
 }
 
 // parseOutput - wrapper for parsing functions, return list of words
-func parseOutput() ([]string, error) {
+func parseOutput(addr string) ([]string, error) {
 	var words []string
-	txt, err := CurlToAddr("http://www.randomtext.me/api/gibberish")
+	txt, err := CurlToAddr(addr)
 	if err != nil {
 		return words, err
 	}
@@ -104,7 +110,7 @@ func parseOutput() ([]string, error) {
 		return words, err
 	}
 
-	res := splitByTag(txt)
+	res, _ := splitByTag(txt)
 	if len(res) == 0 {
 		return words, ErrEmptyResult
 	}
@@ -118,7 +124,10 @@ func parseOutput() ([]string, error) {
 }
 
 // genOfflineWords - in case we have no access to internet for get random words from site
-func genOfflineWords(numOfWords int) []string {
+func genOfflineWords(numOfWords int) ([]string, error) {
+	if numOfWords < 3 {
+		return []string{}, ErrBadNumOfWords
+	}
 	res := make([]string, numOfWords)
 	for i := range res {
 		w := ""
@@ -129,25 +138,28 @@ func genOfflineWords(numOfWords int) []string {
 		}
 		res[i] = w
 	}
-	return res
+	return res, nil
 }
 
 // GetRandWords - get number of wanted words & create list of random choosen words with predefined length
 // GetRandWords(3, words) => [word1, word2, word3]
-func GetRandWords(numOfWords int) []string {
+func GetRandWords(numOfWords int) ([]string, error) {
+	if numOfWords < 3 {
+		return []string{}, ErrBadNumOfWords
+	}
 	res := make([]string, numOfWords)
-	words, err := parseOutput()
+	words, err := parseOutput("http://www.randomtext.me/api/gibberish")
 	if err != nil {
-		words = genOfflineWords(numOfWords)
+		words, _ = genOfflineWords(numOfWords)
 		for i := range res {
 			res[i] = strings.Title(words[i])
 		}
-		return res
+		return res, nil
 	}
 	for i := range res {
 		res[i] = strings.Title(words[abracadabra.SeededRand.Intn(len(words))])
 	}
-	return res
+	return res, nil
 }
 
 func random(min, max int) int {
