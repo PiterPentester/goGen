@@ -2,8 +2,51 @@ package abracadabra
 
 import (
 	"math/rand"
+	"regexp"
 	"time"
+	"unicode"
 )
+
+// CheckStrength - test our password complexity.
+// TRUE if contains UPPERCASE & lowercase & special symbols.
+// Else => FALSE
+func CheckStrength(pass string) bool {
+	isDigit := false
+	isUpper := false
+	isLower := false
+	isSymbol := false
+
+	if len(pass) < 8 {
+		return false
+	}
+
+	for _, c := range pass {
+		if unicode.IsDigit(c) {
+			isDigit = true
+		}
+		if unicode.IsUpper(c) {
+			isUpper = true
+		}
+		if unicode.IsLower(c) {
+			isLower = true
+		}
+	}
+
+	reg, err := regexp.Compile("[!^a-zA-Z0-9]+")
+	if err != nil {
+		return false
+	}
+
+	processedString := reg.ReplaceAllString(pass, "")
+	if processedString != "" {
+		isSymbol = true
+	}
+
+	if isDigit && isUpper && isLower && isSymbol {
+		return true
+	}
+	return false
+}
 
 // ConsonantsLower - lower consonants in language
 const ConsonantsLower = "bcdfghjklmnpqrstvwxz"
@@ -72,7 +115,7 @@ func StringWithCharset(length int, Charset string) string {
 	if len(string(b)) > 7 {
 		return string(b)
 	}
-	return String(10)
+	return String(16)
 }
 
 // String - wrapper for StringWithCharset. Get length(int) => return StringWithCharset

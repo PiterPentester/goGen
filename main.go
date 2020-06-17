@@ -22,9 +22,10 @@ func goGen() {
 	genAbr := flag.Bool("abr", false, "generate abracadabra password")
 	flag.Parse()
 	if *genMem {
-		fmt.Println("Memorable password:", mem.GenMemorablePass(mem.GetRandWords(3)))
+		wrds, _ := mem.GetRandWords(3)
+		fmt.Println("Memorable password:", mem.GenMemorablePass(wrds))
 	} else if *genAbr {
-		fmt.Println("Abracadabra password:", abr.String(10))
+		fmt.Println("Abracadabra password:", abr.String(16))
 	} else {
 		fmt.Println("Choose your pass:")
 		fmt.Println("./goGen -mem (return memorable password)")

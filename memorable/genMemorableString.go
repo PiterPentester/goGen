@@ -3,10 +3,10 @@ package memorable
 import (
 	"errors"
 	"io/ioutil"
-	"net/http"
-	"strings"
 	"math/rand"
+	"net/http"
 	"strconv"
+	"strings"
 
 	"github.com/PiterPentester/goGen/abracadabra"
 )
@@ -163,7 +163,7 @@ func GetRandWords(numOfWords int) ([]string, error) {
 }
 
 func random(min, max int) int {
-    return rand.Intn(max-min) + min
+	return rand.Intn(max-min) + min
 }
 
 // GenMemorablePass - main function for generating memorable passwords
@@ -171,7 +171,7 @@ func GenMemorablePass(words []string) string {
 	res := ""
 	for _, w := range words {
 		//d := abracadabra.Digits[abracadabra.SeededRand.Intn(len(abracadabra.Digits))]
-		randomNum :=random(10, 99)
+		randomNum := random(1, 999)
 		str := strconv.Itoa(randomNum)
 		res += w + string(str)
 	}
