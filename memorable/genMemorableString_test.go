@@ -2,48 +2,10 @@ package memorable
 
 import (
 	"reflect"
-	"regexp"
 	"testing"
-	"unicode"
+
+	"github.com/PiterPentester/goGen/abracadabra"
 )
-
-func checkStrength(pass string) bool {
-	isDigit := false
-	isUpper := false
-	isLower := false
-	isSymbol := false
-
-	if len(pass) < 8 {
-		return false
-	}
-
-	for _, c := range pass {
-		if unicode.IsDigit(c) {
-			isDigit = true
-		}
-		if unicode.IsUpper(c) {
-			isUpper = true
-		}
-		if unicode.IsLower(c) {
-			isLower = true
-		}
-	}
-
-	reg, err := regexp.Compile("[!^a-zA-Z0-9]+")
-	if err != nil {
-		return false
-	}
-
-	processedString := reg.ReplaceAllString(pass, "")
-	if processedString != "" {
-		isSymbol = true
-	}
-
-	if isDigit && isUpper && isLower && isSymbol {
-		return true
-	}
-	return false
-}
 
 func TestCurlToAddr(t *testing.T) {
 	type args struct {
@@ -304,14 +266,14 @@ func TestGenMemorablePass(t *testing.T) {
 		{
 			name: "good complexity",
 			args: args{
-				words: []string{"Simple", "inSecure", "pAss"},
+				words: []string{"Simple", "inSecure78*()", "pAss"},
 			},
 			check: true},
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if got := checkStrength(GenMemorablePass(tt.args.words)); got != tt.check {
-				t.Errorf("GenMemorablePass() = %v, want %v", got, tt.check)
+			if got := abracadabra.CheckStrength(GenMemorablePass(tt.args.words)); got != tt.check {
+				t.Errorf("CheckStrength for GenMemorablePass() = %v, want %v", got, tt.check)
 			}
 		})
 	}

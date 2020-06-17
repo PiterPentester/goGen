@@ -171,7 +171,7 @@ func GenMemorablePass(words []string) string {
 	res := ""
 	for _, w := range words {
 		//d := abracadabra.Digits[abracadabra.SeededRand.Intn(len(abracadabra.Digits))]
-		randomNum := random(10, 99)
+		randomNum := random(1, 999)
 		str := strconv.Itoa(randomNum)
 		res += w + string(str)
 	}
