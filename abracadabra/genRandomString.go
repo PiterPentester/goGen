@@ -72,7 +72,7 @@ func StringWithCharset(length int, Charset string) string {
 	if len(string(b)) > 7 {
 		return string(b)
 	}
-	return String(10)
+	return String(16)
 }
 
 // String - wrapper for StringWithCharset. Get length(int) => return StringWithCharset
