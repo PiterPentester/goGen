@@ -6,7 +6,7 @@ import (
 	"unicode"
 )
 
-// checkStrength(password) - test our password complexity.
+// CheckStrength(password) - test our password complexity.
 // TRUE if contains UPPERCASE & lowercase & special symbols.
 // Else => FALSE
 func checkStrength(pass string) bool {
@@ -58,12 +58,12 @@ func TestStringWithCharset(t *testing.T) {
 		check bool
 	}{
 		{
-			name: "fail length < 8",
+			name: "length < 8 => len = 12",
 			args: args{
 				length:  7,
 				Charset: Charset,
 			},
-			check: false,
+			check: true,
 		},
 		{
 			name: "test length 10",
@@ -102,11 +102,11 @@ func TestString(t *testing.T) {
 		check bool
 	}{
 		{
-			name: "fail length < 8",
+			name: "length < 8  => 12",
 			args: args{
 				length: 7,
 			},
-			check: false,
+			check: true,
 		},
 		{
 			name: "test length 10",
