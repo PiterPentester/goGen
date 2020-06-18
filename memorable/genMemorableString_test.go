@@ -165,7 +165,7 @@ func TestSplitBySpace(t *testing.T) {
 	}
 }
 
-func TestGenOfflineWords(t *testing.T) {
+func TestGenOfflineWordsAndGetRand(t *testing.T) {
 	type args struct {
 		numOfWords int
 	}
@@ -202,46 +202,15 @@ func TestGenOfflineWords(t *testing.T) {
 			if len(got) != len(tt.want) {
 				t.Errorf("genOfflineWords() = %v, want %v", got, tt.want)
 			}
-		})
-	}
-}
 
-func TestGetRandWords(t *testing.T) {
-	type args struct {
-		numOfWords int
-	}
-	tests := []struct {
-		name    string
-		args    args
-		want    []string
-		wantErr bool
-	}{
-		{
-			name: "fail - less than 3 words",
-			args: args{
-				numOfWords: 0,
-			},
-			want:    []string{},
-			wantErr: true,
-		},
-		{
-			name: "good",
-			args: args{
-				numOfWords: 4,
-			},
-			want:    []string{"Works", "quality", "sound", "tested"},
-			wantErr: false,
-		},
-	}
-	for _, tt := range tests {
-		t.Run(tt.name, func(t *testing.T) {
-			got, err := GetRandWords(tt.args.numOfWords)
-			if (err != nil) != tt.wantErr {
-				t.Errorf("GetRandWords() error = %v, wantErr %v", err, tt.wantErr)
+			// Check two functions in one test to avoid code duplication
+			get, e := GetRandWords(tt.args.numOfWords)
+			if (e != nil) != tt.wantErr {
+				t.Errorf("GetRandWords() error = %v, wantErr %v", e, tt.wantErr)
 				return
 			}
-			if len(got) != len(tt.want) {
-				t.Errorf("GetRandWords() = %v, want %v", got, tt.want)
+			if len(get) != len(tt.want) {
+				t.Errorf("GetRandWords() = %v, want %v", get, tt.want)
 			}
 		})
 	}
