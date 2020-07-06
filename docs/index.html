@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>goGen - Simple password generator</title>
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="media-queries.css">
+	<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@700&family=Rajdhani&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+	<header class="intro">
+		<div class="flex-container">
+			<div class="flex-item">
+				<img src="images/logo.png" alt="" class="logo"></div>
+			<div class="flex-item pd-txt">
+				<h1>Generating Passwords For People</h1>
+				<p>goGen - simple password generator on <span style="color: cyan; font-weight: 600;">Golang</span>. Created for education purposes but working for all!</p>
+			</div>
+		</div>
+	</header>
+	<section class="features">
+		<div class="flex-container">
+			<div class="flex-item-f">
+				<img src="images/lock.png" alt="" class="flex-item-img">
+				<h1>Ultra-secure</h1>
+				<p>Using the best security policy to generating a mega secure passwords</p>
+			</div>
+			<div class="flex-item-f">
+				<img src="images/platform.png" alt="" class="flex-item-img">
+				<h1>Cross-platform</h1>
+				<p>Use it on Windows/MacOS/Linux or build for your system</p>
+			</div>
+			<div class="flex-item-f">
+				<img src="images/mind.png" alt="" class="flex-item-img">
+				<h1>Memorable</h1>
+				<p>Easy to memory but still ultra-secure passwords</p>
+			</div>
+		</div>
+	</section>
+	<section class="steps">
+		<div class="steps-container">
+			<div class="steps-item">
+				<img src="images/Icon_1.png" alt="">
+				<h1>Installation</h1>
+				<p class="sc-title">You need to install golang version > 1.11</p>
+				<p class="steps-p">$ git clone https://github.com/PiterPentester/goGen.git <br> $ cd goGen <br> $ go build -o goGen . </p>
+			</div>
+			<div class="steps-item">
+				<img class="step-img" src="images/about_img.png" alt="">
+			</div>
+			<div class="steps-item">
+				<img class="step-img" src="images/about_img_1.png" alt="">
+			</div>
+			<div class="steps-item">
+				<img src="images/Icon_2.png" alt="">
+				<h1>How to use</h1>
+				<p class="steps-p">$ ./goGen -abr</p>
+				<p class="sc-p">returning randomised password with default length 16 symbols Abracadabra password: yq>$BY23T@lqJ!cS</p>
+				<p class="steps-p">$ ./goGen -mem</p>
+				<p class="sc-p">returning more readable password with default number of words - 3 Manta282Grievously438Stank830#</p>
+				<a href="https://github.com/PiterPentester/goGen/releases" class="btn">Get release</a>
+			</div>
+		</div>
+	</section>
+	<section class="about-prj">
+		<div class="about-prj-container">
+			<div class="about-prj-item">
+				<h1>Who <br> We <br> Are</h1>
+			</div>
+			<div class="about-prj-item">
+				<p>We are cybersecurity enthusiasts who like to developing new things and hacking old! We are not professionals so if you find bugs in our projects - feel free to contact us: shtormless@gmail.com!
+					We work on different projects just for fun! If you want - join us! Maybe a few years ago we will be super skilled hackers, but now we just learning.</p>
+			</div>
+		</div>
+	</section>
+	<section class="about-us">
+		<h3 class="about-us-title">Meet our superb team</h3>
+		<div class="members-container">
+			<div class="member-block">
+				<a href="https://github.com/PiterPentester"><img src="images/Bohdan.png" alt="" class="member"></a>
+				<h3>Bohdan Pakhomov</h3>
+				<p>Developer, tester</p>
+			</div>
+			<div class="member-block">
+				<a href="https://github.com/donuthack"><img src="images/Lana.png" alt="" class="member"></a>
+				<h3>Roksolana Trofymchuk</h3>
+				<p>Developer, tester</p>
+			</div>
+			<div class="member-block">
+				<a href="https://github.com/Katrin29"><img src="images/Kate.png" alt="" class="member"></a>
+				<h3>Kate Kostetska</h3>
+				<p>Developer, tester</p>
+			</div>
+			<div class="member-block">
+				<a href="https://github.com/Eventuri7"><img src="images/avatar3.png" alt="" class="member"></a>
+				<h3>Ostap Bodnar</h3>
+				<p>Designer, tester</p>
+			</div>
+		</div>
+	</section>
+	<footer class="end">
+		<div class="copyright-main">
+			<h3>copyright © 2020</h3>
+			<h3>skeleton crew</h3>
+		</div>
+	</footer>
+</body>
+</html>

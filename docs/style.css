@@ -1,0 +1,548 @@
+body, html {
+	height: 100%;
+}
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+a {
+	text-decoration: none;
+}
+
+.intro {
+  	background-image: url("images/banner.png");
+  	height: 100%;
+  	width: 100%;
+  	background-position: left top;
+ 	background-repeat: no-repeat;
+  	background-size: 65% 100%;
+  	position: relative;
+}
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+    height: 100%;
+}
+.flex-item {
+	text-align: center;
+	max-width: 40%;
+}
+.pd-txt {
+	padding-top: 140px;
+}
+.flex-item h1 {
+	text-align: left;
+	font-size: 70px;
+    text-transform: capitalize;
+    font-weight: 700;
+    margin-bottom: 30px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    color: #182028;
+}
+.flex-item p {
+	text-align: left;
+	font-family: 'Rajdhani', sans-serif;
+	color: #888888;
+	font-size: 20px;
+}
+.logo {
+	max-width: 100%;
+	max-height: 100%;
+}
+.features {
+	background-color: white;
+	height: 600px;
+}
+.flex-item-f {
+	text-align: center;
+	height: 45%;
+	width: 20%;
+	margin: 40px;
+	padding: 15px;
+	border-radius: 17px;
+    box-shadow: -1px 9px 18px 0px rgba(75, 81, 91, 0.2);
+}
+.flex-item-f h1 {
+	font-family: 'Barlow Semi Condensed', sans-serif;
+    color: #182028;
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+.flex-item-f p {
+	text-align: justify;
+	color: #7f7f7f;
+    line-height: 1.4;
+    font-size: 18px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+.flex-item-img {
+	height: 75px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+}
+.steps {
+	height: 1000px;
+}
+.steps-container {
+	display: grid;
+	grid-template-columns: 40% 40%;
+	grid-template-rows: 50% 50%;
+	justify-content: center;
+}
+.steps-item img {
+	margin-bottom: 10px;
+}
+.step-img {
+	width: 95%;
+}
+.sc-title {
+	color: black;
+	font-size: 22px;
+	font-family: 'Barlow Semi Condensed', sans-serif;
+	margin-bottom: 20px;
+}
+.steps-item h1 {
+	font-size: 45px;
+    font-weight: 500;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+    margin-bottom: 35px;
+}
+.steps-p {
+	color: black;
+	font-size: 18px;
+	font-family: 'Barlow Semi Condensed', sans-serif;
+	margin-bottom: 30px;
+	margin-left: 50px;
+}
+.sc-p {
+	color: black;
+	font-size: 18px;
+	font-family: 'Barlow Semi Condensed', sans-serif;
+	margin-bottom: 30px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 44px;
+  border-radius: 50px;
+  background-color: #0aa5cc;
+  font-size: 15px;
+  font-family: "Rajdhani", sans-serif;
+  font-weight: 600;
+  color: #fff;
+  -webkit-transition: 0.5s;
+  transition: 0.5s;
+  text-transform: uppercase;
+  border: 2px solid #0aa5cc;
+}
+.btn:hover {
+  color: #0aa5cc !important;
+  border: 2px solid #0aa5cc;
+  background-color: transparent;
+}
+.about-prj {
+	background-color: white;
+	height: 650px;
+	background-image: url(images/mt-1763-home-bg1.jpg);
+    background-position: top;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.about-prj-container {
+	display: grid;
+	grid-template-columns: 40% 40%;
+	grid-template-rows: 650px;
+	justify-content: center;
+	align-items: center;
+	grid-gap: 25px;
+}
+.about-prj-item h1 {
+	text-align: center;
+	font-size: 100px;
+	color: white;
+	line-height: 1;
+	font-family: 'Barlow Semi Condensed', sans-serif;
+}
+.about-prj-item p {
+	text-align: justify;
+	color: white;
+	font-size: 24px;
+	font-family: 'Rajdhani', sans-serif;
+}
+.about-us {
+	background-color: white;
+	height: 500px;
+}
+.about-us-title {
+	text-align: center;
+	font-family: 'Rubik', sans-serif;
+    color: black;
+    font-size: 40px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    margin-top: 20px;
+    text-transform: uppercase;
+}
+.members-container {
+	display: grid;
+	grid-template-columns: 350px 350px 350px 350px;
+	grid-template-rows: 100%;
+	grid-gap: 15px;
+	justify-content: center;
+	margin-top: 50px;
+}
+.member-block {
+	text-align: center;
+}
+.member {
+	border-radius: 50%;
+	width: 75%;
+}
+.member-block h3 {
+	font-family: 'Barlow Semi Condensed', sans-serif;
+    color: #182028;
+    font-size: 25px;
+    font-weight: 600;
+    margin: 20px 0px 0px 0px;
+}
+.member-block p {
+	text-align: center;
+	color: #7f7f7f;
+    line-height: 1.8;
+    font-size: 15px;
+    font-family: 'Barlow Semi Condensed', sans-serif;
+}
+.end {
+	background-color: #003dca;
+	height: 60px;
+}
+.copyright-main {
+	padding-top: 15px;
+}
+.copyright-main h3 {
+	font-size: 15px;
+	color: white;
+	text-align: center;
+	font-weight: 300;
+	font-family: 'Barlow Semi Condensed', sans-serif;
+}
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+	.flex-item h1 {
+		font-size: 44px;
+	}
+	.flex-item-f img {
+		height: 55px;
+	}
+	.flex-item-f h1 {
+		font-size: 20px;
+	}
+	.flex-item-f p {
+		font-size: 18px;
+	}
+	.steps {
+		height: 1100px;
+	}
+	.steps-container {
+		grid-template-columns: 40% 40%;
+		grid-template-rows: 58% 58%;
+	}
+	.sc-title {
+		font-size: 16px;
+	}
+	.steps-item h1 {
+		font-size: 40px;
+	}
+	.steps-p {
+		font-size: 16px;
+		margin-left: 40px;
+	}
+	.sc-p {
+		font-size: 16px;
+	}
+	.btn {
+	  padding: 10px 33px;
+	  font-size: 14px;
+	}
+	.about-prj-item h1 {
+		font-size: 100px;
+	}
+	.about-prj-item p {
+		font-size: 20px;
+	}
+	.about-us {
+		height: 350px;
+	}
+	.about-us-title {
+		font-size: 35px;
+	}
+	.members-container {
+		grid-template-columns: 210px 210px 210px 210px;
+		grid-gap: 25px;
+	}
+	.member {
+		width: 80%;
+	}
+	.member-block h3 {
+		font-size: 20px;
+	}
+	.member-block p {
+		font-size: 16px;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+	.intro {
+		background-size: 75% 100%;
+	}
+	.flex-item h1 {
+		font-size: 32px;
+		margin-bottom: 15px;
+	}
+	.flex-item p {
+		font-size: 20px;
+	}
+	.logo {
+		padding-top: 40px;
+	}
+	.flex-item-f img {
+		height: 55px;
+		margin-bottom: 10px;
+	}
+	.flex-item-f h1 {
+		font-size: 16px;
+	}
+	.flex-item-f p {
+		font-size: 16px;
+	}
+	.steps {
+		height: 1000px;
+	}
+	.steps-container {
+		grid-template-columns: 40% 40%;
+		grid-template-rows: 58% 58%;
+	}
+	.sc-title {
+		font-size: 16px;
+	}
+	.steps-item h1 {
+		font-size: 40px;
+	}
+	.steps-p {
+		font-size: 15px;
+		margin-left: 35px;
+	}
+	.sc-p {
+		font-size: 15px;
+	}
+	.btn {
+	  	padding: 8px 22px;
+	  	font-size: 14px;
+	}
+	.about-prj-item h1 {
+		font-size: 80px;
+	}
+	.about-prj-item p {
+		font-size: 18px;
+	}
+	.about-us {
+		height: 300px;
+	}
+	.about-us-title {
+		font-size: 30px;
+	}
+	.members-container {
+		grid-template-columns: 180px 180px 180px 180px;
+		grid-gap: 0px;
+	}
+	.member {
+		width: 60%;
+	}
+	.member-block h3 {
+		font-size: 18px;
+	}
+	.member-block p {
+		font-size: 14px;
+	}
+}
+
+@media (min-width: 481px) and (max-width: 767px) {
+	.intro {
+		background-size: 100% 80%;
+	}
+	.flex-item h1 {
+		font-size: 20px;
+		margin-bottom: 15px;
+	}
+	.flex-item p {
+		font-size: 12px;
+	}
+	.pd-txt {
+		padding-top: 200px;
+	}
+	.logo {
+		padding-top: 120px;
+	}
+	.flex-item-f {
+		margin: 15px;
+		width: 26%;
+	}
+	.flex-item-f img {
+		height: 45px;
+		margin-bottom: 10px;
+	}
+	.flex-item-f h1 {
+		font-size: 18px;
+	}
+	.flex-item-f p {
+		font-size: 13px;
+	}
+	.steps {
+		height: 900px;
+	}
+	.steps-container {
+		grid-template-columns: 40% 40%;
+		grid-template-rows: 58% 58%;
+	}
+	.step-img {
+		width: 100%;
+	}
+	.sc-title {
+		font-size: 16px;
+	}
+	.steps-item h1 {
+		font-size: 30px;
+	}
+	.steps-p {
+		font-size: 11px;
+		margin-left: 0px;
+	}
+	.sc-p {
+		font-size: 12px;
+	}
+	.btn {
+	  padding: 2px 12px;
+	  font-size: 14px;
+	}
+	.about-prj-item h1 {
+		font-size: 70px;
+	}
+	.about-prj-item p {
+		font-size: 14px;
+	}
+	.about-us {
+		height: 300px;
+	}
+	.about-us-title {
+		font-size: 30px;
+	}
+	.members-container {
+		grid-template-columns: 105px 105px 105px 105px;
+		grid-gap: 10px;
+	}
+	.member {
+		width: 85%;
+	}
+	.member-block h3 {
+		font-size: 14px;
+	}
+	.member-block p {
+		font-size: 10px;
+	}
+}
+
+@media (min-width: 320px) and (max-width: 480px) {
+	.intro {
+		background-size: 100% 80%;
+	}
+	.flex-item h1 {
+		font-size: 14px;
+		margin-bottom: 5px;
+	}
+	.flex-item p {
+		font-size: 8px;
+	}
+	.pd-txt {
+		padding-top: 120px;
+	}
+	.logo {
+		padding-top: 100px;
+	}
+	.features {
+		height: 300px;
+	}
+	.flex-item-f {
+		margin: 5px;
+		width: 30%;
+		height: 60%;
+	}
+	.flex-item-f img {
+		height: 35px;
+		margin-bottom: 10px;
+	}
+	.flex-item-f h1 {
+		font-size: 12px;
+	}
+	.flex-item-f p {
+		font-size: 8px;
+	}
+	.steps {
+		height: 800px;
+	}
+	.steps-container {
+		grid-template-columns: 40% 40%;
+		grid-template-rows: 60% 60%;
+	}
+	.sc-title {
+		font-size: 16px;
+	}
+	.steps-item h1 {
+		font-size: 30px;
+	}
+	.steps-p {
+		font-size: 7px;
+		margin-left: 0px;
+	}
+	.sc-p {
+		font-size: 9px;
+	}
+	.btn {
+	  padding: 4px 8px;
+	  font-size: 8px;
+	}
+	.about-prj {
+		height: 550px;
+	}
+	.about-prj-item h1 {
+		font-size: 60px;
+	}
+	.about-prj-item p {
+		font-size: 10px;
+	}
+	.about-us {
+		height: 550px;
+	}
+	.about-us-title {
+		font-size: 15px;
+	}
+	.members-container {
+		grid-template-columns: 140px;
+		grid-template-rows: 120px 120px 120px 120px;
+		grid-gap: 0px;
+		margin-top: 15px;
+	}
+	.member {
+		width: 50%;
+	}
+	.member-block h3 {
+		font-size: 14px;
+		margin-top: 5px;
+	}
+	.member-block p {
+		font-size: 10px;
+	}
+}
