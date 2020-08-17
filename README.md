@@ -1,4 +1,4 @@
-# <p align="center"><img src="https://github.com/PiterPentester/goGen/blob/develop/logo.jpeg" width="500" align="center"></p>
+# <p align="center"><img src="https://github.com/PiterPentester/goGen/blob/master/logo.jpeg" width="500" align="center"></p>
 <h1 align="center">goGen</h1>
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/99669174d0db4a9aa75153904bd04a80)](https://app.codacy.com/manual/shtormless/goGen?utm_source=github.com&utm_medium=referral&utm_content=PiterPentester/goGen&utm_campaign=Badge_Grade_Dashboard)
